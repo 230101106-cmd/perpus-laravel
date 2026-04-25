@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Apr 2026 pada 06.52
+-- Waktu pembuatan: 24 Apr 2026 pada 17.20
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.0.30
 
@@ -29,13 +29,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `books` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `author` varchar(255) NOT NULL,
-  `isbn` varchar(255) NOT NULL,
-  `stock` int(11) NOT NULL DEFAULT 0,
+  `judul` varchar(255) NOT NULL,
+  `penulis` varchar(255) NOT NULL,
+  `stok` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `books`
+--
+
+INSERT INTO `books` (`id`, `judul`, `penulis`, `stok`, `created_at`, `updated_at`) VALUES
+(1, 'Laskar Pelangi', 'Andrea Hirata', 5, '2026-04-24 06:40:54', '2026-04-24 06:40:54'),
+(3, 'Bumi Manusia', 'Pramoedya Ananta', 2, '2026-04-24 07:52:11', '2026-04-24 07:52:11'),
+(4, 'Laskar Pelangi', 'Andrea Hirata', 1, '2026-04-24 08:11:13', '2026-04-24 08:11:13');
 
 -- --------------------------------------------------------
 
@@ -74,7 +82,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2026_04_25_042339_create_books_table', 1);
+(5, '2026_04_24_070539_create_books_table', 1);
 
 -- --------------------------------------------------------
 
@@ -124,6 +132,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Admin Perpustakaan', 'admin@mail.com', NULL, '$2y$10$WftGHTR3wTo8fKLTdpD7hu5jxt8Ia0MoaDcITi63YsZlo0..2kwSW', NULL, '2026-04-24 05:36:53', '2026-04-24 05:36:53');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -131,8 +146,7 @@ CREATE TABLE `users` (
 -- Indeks untuk tabel `books`
 --
 ALTER TABLE `books`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `books_isbn_unique` (`isbn`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `failed_jobs`
@@ -176,7 +190,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -200,7 +214,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
