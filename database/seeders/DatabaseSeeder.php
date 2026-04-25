@@ -14,5 +14,15 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@mail.com',
             'password' => bcrypt('admin123'), // Password wajib dienkripsi
         ]);
+
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        
+n
     }
 }
